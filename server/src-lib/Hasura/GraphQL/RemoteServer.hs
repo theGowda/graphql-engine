@@ -154,7 +154,7 @@ execRemoteGQ env tracesPropagator userInfo reqHdrs rsdef gqlReq@GQLReq {..} = do
       -- priority: conf headers > resolved userinfo vars > client headers
       hdrMaps =
         [ HashMap.fromList confHdrs,
-          HashMap.fromList userInfoToHdrs,
+          HashMap.fromList $ if True then [] else userInfoToHdrs,
           HashMap.fromList clientHdrs
         ]
       headers = HashMap.toList $ foldr HashMap.union HashMap.empty hdrMaps
